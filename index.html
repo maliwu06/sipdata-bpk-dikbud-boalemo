@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIPDATA BPK BOALEMO</title>
-    <style>
-        /* Menghilangkan margin browser agar aplikasi tampil fullscreen */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background-color: #0b0f19; /* Warna latar belakang gelap bawaan aplikasi Anda */
-        }
-        /* Mengatur iframe agar borderless dan responsif penuh */
-        iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIPDATA BPK</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overflow: hidden; /* Mencegah scroll ganda */
+      background-color: #f8fafc;
+    }
+    .iframe-wrapper {
+      position: absolute;
+      top: -36px; /* Menggeser iframe ke atas untuk menutupi banner Google */
+      left: 0;
+      width: 100%;
+      height: calc(100% + 36px); /* Mengembalikan sisa tinggi agar tidak terpotong di bawah */
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Link Web App Google Apps Script Anda yang dibungkus secara utuh -->
-    <iframe src="https://google.com"></iframe>
-
+  <div class="iframe-wrapper">
+    <!-- Ganti URL di bawah dengan URL Web App GAS kamu -->
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbzfpkLfTv3aDpy9VGEx9pyn0cFxqrHkd4cc47iGjAo5SwvuPP_l5fSzfkUVJfRN_4sCkA/exec" 
+      allow="geolocation; microphone; camera; clipboard-write">
+    </iframe>
+  </div>
 </body>
 </html>
