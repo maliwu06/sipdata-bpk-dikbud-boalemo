@@ -1,95 +1,424 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Resmi SIPDATA BPK - Kab. Boalemo</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://tailwindcss.com"></script>
-  <!-- Google Fonts & FontAwesome -->
-  <link href="https://googleapis.com" rel="stylesheet">
-  <link rel="stylesheet" href="https://cloudflare.com">
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at top right, #1e1b4b, #0f172a, #020617);
-    }
-    .glow-button {
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.2);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glow-button:hover {
-      box-shadow: 0 0 35px rgba(16, 185, 129, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-  </style>
-</head>
-<body class="min-h-screen text-slate-100 flex items-center justify-center p-4 md:p-8 relative overflow-x-hidden">
-
-  <!-- Dekorasi Background Ambient Neon (Menghilangkan kesan polos) -->
-  <div class="absolute w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] -top-20 -left-20 pointer-events-none"></div>
-  <div class="absolute w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[120px] -bottom-20 -right-20 pointer-events-none"></div>
-
-  <!-- Card Utama Portal (Glassmorphism Premium) -->
-  <div class="max-w-xl w-full bg-slate-900/40 backdrop-blur-2xl border border-white/10 p-6 md:p-10 rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] space-y-8 relative z-10">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPDATA BPK - Portal Resmi Pengumpulan Data BOSP Kab. Boalemo</title>
     
-    <!-- Header Instansi Minimalis & Mewah -->
-    <div class="flex flex-col items-center text-center space-y-3 pb-6 border-b border-white/10">
-      <div class="w-16 h-16 bg-gradient-to-b from-white/10 to-white/5 rounded-2xl flex items-center justify-center border border-white/20 p-2 shadow-xl backdrop-blur-sm">
-        <img src="https://wikimedia.org" alt="Logo Boalemo" class="max-h-full object-contain filter drop-shadow(0 4px 6px rgba(0,0,0,0.3))">
-      </div>
-      <div class="space-y-1">
-        <h1 class="text-xs font-bold tracking-[0.2em] text-emerald-400 uppercase">Dinas Pendidikan dan Kebudayaan</h1>
-        <p class="text-xl font-extrabold tracking-tight text-white bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">SIPDATA BPK BOALEMO</p>
-        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-indigo-500/10 border border-indigo-500/30 rounded-full text-[10px] font-semibold text-indigo-300 tracking-wider">
-          <i class="fa-solid fa-shield-halved text-indigo-400"></i> TA 2026 &bull; SEMESTER I
-        </div>
-      </div>
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols Rounded -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        bpk: {
+                            dark: '#060b17',
+                            card: '#0e172a',
+                            navy: '#0b1d3a',
+                            accent: '#10b981',
+                            gold: '#fbbf24',
+                            goldHover: '#f59e0b',
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s infinite',
+                        'orbit': 'orbit 20s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 25px rgba(16, 185, 129, 0.4)' },
+                            '50%': { boxShadow: '0 0 50px rgba(16, 185, 129, 0.8), 0 0 80px rgba(16, 185, 129, 0.3)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #060b17;
+            color: #f8fafc;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glass-panel {
+            background: rgba(14, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-panel-glow {
+            background: rgba(14, 23, 42, 0.85);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 20px 50px -10px rgba(6, 11, 23, 0.8), 0 0 30px -10px rgba(16, 185, 129, 0.15);
+        }
+
+        .notice-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(14, 165, 233, 0.08) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #10b981, #3b82f6);
+        }
+
+        .btn-glowing-emerald {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glowing-emerald:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.6);
+        }
+
+        .btn-glowing-emerald::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: rotate(30deg);
+            animation: shimmer 3s infinite;
+        }
+
+        .step-item {
+            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .step-item:hover {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: rgba(251, 191, 36, 0.4);
+            transform: translateX(6px);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #060b17; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-emerald-500 selection:text-slate-950 font-sans">
+
+    <!-- Background Ambient Lights & Grid -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-emerald-600/15 rounded-full filter blur-[150px] animate-pulse-glow"></div>
+        <div class="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-blue-600/15 rounded-full filter blur-[160px]"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/10 rounded-full filter blur-[180px]"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
     </div>
 
-    <!-- Info Box Soft Glowing -->
-    <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/5 border-l-4 border-blue-500 p-5 rounded-2xl border-t border-r border-b border-white/5 shadow-inner">
-      <div class="flex gap-3">
-        <span class="text-lg">📢</span>
-        <p class="text-xs md:text-sm text-blue-200/90 font-medium leading-relaxed">
-          <strong class="text-blue-400">Pemberitahuan Pemeriksaan LKPD:</strong><br>
-          Dihimbau kepada seluruh Kepala Sekolah dan Bendahara BOSP se-Kabupaten Boalemo untuk segera mengisi instrumen pengumpulan data belanja melalui portal di bawah ini.
-        </p>
-      </div>
-    </div>
+    <!-- Top Navigation Header -->
+    <header class="relative z-20 border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-800 p-0.5 shadow-lg shadow-emerald-950/50">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                        <span class="material-symbols-rounded text-emerald-400 text-2xl">account_balance</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-extrabold text-lg tracking-tight text-white leading-none">SIPDATA BPK</h1>
+                        <span class="bg-amber-400/10 border border-amber-400/30 text-amber-300 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            BOALEMO
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium leading-tight mt-1">
+                        Dinas Pendidikan dan Kebudayaan Kabupaten Boalemo
+                    </p>
+                </div>
+            </div>
 
-    <!-- Tombol Akses Utama (Neon Glow Action) -->
-    <div class="space-y-3 text-center">
-      <p class="text-xs text-slate-400 tracking-wide">Klik tautan aman di bawah untuk membuka sistem aplikasi:</p>
-      <div class="py-2">
-        <a href="https://google.com" target="_blank" 
-           class="glow-button inline-flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white font-bold px-8 py-4.5 rounded-2xl text-sm tracking-wider uppercase transform hover:-translate-y-1 active:translate-y-0 w-full md:w-auto shadow-lg shadow-emerald-500/20">
-          <i class="fa-solid fa-circle-play text-base animate-pulse"></i> Mulai Pengisian Formulir
-        </a>
-      </div>
-    </div>
+            <!-- Server Status & Live Indicator -->
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs text-slate-300">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span class="font-mono text-[11px] text-slate-300">SERVER ONLINE</span>
+                </div>
 
-    <!-- Alur Panduan Bergaya Timeline Ringkas -->
-    <div class="bg-slate-950/40 border border-white/5 rounded-2xl p-5 space-y-4 shadow-inner">
-      <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2">
-        <i class="fa-solid fa-list-check text-emerald-400 text-sm"></i> Prosedur Validasi Data
-      </h3>
-      <div class="grid grid-cols-1 gap-3 text-xs text-slate-400">
-        <div class="flex items-start gap-3 bg-white/5 p-2.5 rounded-xl border border-white/5">
-          <span class="w-5 h-5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold shrink-0">1</span>
-          <p>Otentikasi data menggunakan <strong class="text-slate-200">NPSN Resmi Sekolah</strong>.</p>
-        </div>
-        <div class="flex items-start gap-3 bg-white/5 p-2.5 rounded-xl border border-white/5">
-          <span class="w-5 h-5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold shrink-0">2</span>
-          <p>Verifikasi data Kepala Sekolah, Bendahara, dan nomor SK BOSP.</p>
-        </div>
-        <div class="flex items-start gap-3 bg-white/5 p-2.5 rounded-xl border border-white/5">
-          <span class="w-5 h-5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold shrink-0">3</span>
-          <p>Unggah lampiran dokumen pendukung belanja (Format PDF/Excel maks 10MB).</p>
-        </div>
-      </div>
-    </div>
+                <a href="#countdown-banner" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1 font-medium bg-slate-800/50 hover:bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700/50">
+                    <span class="material-symbols-rounded text-sm text-amber-400">timer</span>
+                    <span>Deadline Audit</span>
+                </a>
+            </div>
 
-  </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+        <!-- Center Glass Card Container -->
+        <div class="glass-panel-glow rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all">
+            
+            <!-- Ambient Top Highlight Bar -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-amber-400 to-blue-500"></div>
+
+            <!-- Header Salutation -->
+            <div class="mb-6 pb-4 border-b border-slate-800/80">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-semibold mb-3">
+                    <span class="material-symbols-rounded text-sm">campaign</span>
+                    SURAT EDARAN & INSTRUKSI AUDIT
+                </div>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug">
+                    Yth. Bapak/Ibu Kepala Sekolah Se-Kabupaten Boalemo,
+                </h2>
+            </div>
+
+            <!-- Official Announcement Box (PEMBERITAHUAN RESMI) -->
+            <div class="notice-card p-5 sm:p-6 rounded-2xl mb-8 shadow-inner">
+                <div class="flex items-start gap-3.5">
+                    <div class="p-2 bg-emerald-500/20 border border-emerald-500/40 rounded-xl text-emerald-400 shrink-0">
+                        <span class="material-symbols-rounded text-2xl">campaign</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-black uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-2">
+                            <span>PEMBERITAHUAN RESMI</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        </h3>
+                        <p class="text-slate-200 text-xs sm:text-sm leading-relaxed font-normal">
+                            Dalam rangka kelancaran pemeriksaan Laporan Keuangan Pemerintah Daerah oleh BPK RI, Dinas Pendidikan dan Kebudayaan Kabupaten Boalemo resmi membuka pengisian instrumen belanja BOSP TA 2026 Semester I secara online.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Link Instruction & Main CTA Button -->
+            <div class="text-center my-8 max-w-2xl mx-auto">
+                <p class="text-slate-300 text-xs sm:text-sm mb-6 font-medium">
+                    Silakan klik tombol tautan di bawah ini untuk masuk ke dalam sistem aplikasi resmi <strong class="text-white font-bold tracking-wide underline decoration-emerald-500 decoration-2 underline-offset-4">SIPDATA BPK</strong>:
+                </p>
+
+                <!-- Primary Glowing CTA Button -->
+                <!-- MENGUBAH HREF MENJADI app.html BUKAN KE GOOGLE SCRIPT LAGI -->
+                <a href="app.html" 
+                   class="inline-block w-full sm:w-auto">
+                    <button class="btn-glowing-emerald animate-pulse-glow w-full sm:w-auto px-8 py-4 sm:py-5 rounded-2xl font-black text-sm sm:text-base tracking-wide flex items-center justify-center gap-3 shadow-2xl group cursor-pointer">
+                        <span class="text-xl group-hover:scale-125 group-hover:rotate-12 transition duration-300">🚀</span>
+                        <span>MASUK KE APLIKASI SIPDATA BPK</span>
+                        <span class="material-symbols-rounded text-xl group-hover:translate-x-1.5 transition duration-300">open_in_new</span>
+                    </button>
+                </a>
+
+                <p class="text-[11px] text-slate-400 mt-3 flex items-center justify-center gap-1.5">
+                    <span class="material-symbols-rounded text-sm text-emerald-400">verified_user</span>
+                    Tersambung langsung ke Server Apps Script Resmi (HTTPS SSL Enkripsi)
+                </p>
+            </div>
+
+            <!-- Countdown Banner Badge Widget -->
+            <div id="countdown-banner" class="my-8 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 text-left">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center font-bold shrink-0">
+                        <span class="material-symbols-rounded">alarm</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-white uppercase tracking-wider">Batas Waktu Pengumpulan</span>
+                            <span class="px-2 py-0.5 bg-rose-500/20 text-rose-300 text-[10px] font-bold rounded">Strict Deadline</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Target Batas Akhir: <strong class="text-amber-300">12 September 2026</strong></p>
+                    </div>
+                </div>
+
+                <!-- Timer Numbers -->
+                <div class="flex items-center gap-2 font-mono text-center">
+                    <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl min-w-[55px]">
+                        <span id="cd-days" class="text-base sm:text-lg font-black text-amber-400 block leading-tight">00</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-sans">Hari</span>
+                    </div>
+                    <span class="text-slate-600 font-bold">:</span>
+                    <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl min-w-[55px]">
+                        <span id="cd-hours" class="text-base sm:text-lg font-black text-amber-400 block leading-tight">00</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-sans">Jam</span>
+                    </div>
+                    <span class="text-slate-600 font-bold">:</span>
+                    <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl min-w-[55px]">
+                        <span id="cd-mins" class="text-base sm:text-lg font-black text-amber-400 block leading-tight">00</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-sans">Menit</span>
+                    </div>
+                    <span class="text-slate-600 font-bold">:</span>
+                    <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl min-w-[55px]">
+                        <span id="cd-secs" class="text-base sm:text-lg font-black text-amber-400 block leading-tight">00</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-sans">Detik</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step-by-step Guide Section (Langkah Pengisian Aplikasi) -->
+            <div class="pt-6 border-t border-slate-800/80">
+                
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-xl">📋</span>
+                    <h3 class="text-base sm:text-lg font-bold text-white tracking-tight">
+                        Langkah Pengisian Aplikasi:
+                    </h3>
+                </div>
+
+                <div class="space-y-3">
+                    
+                    <!-- Step 1 -->
+                    <div class="step-item p-4 rounded-xl flex items-start gap-4">
+                        <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            1
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Klik tombol <strong class="text-emerald-400 font-bold">Masuk ke Aplikasi SIPDATA BPK</strong> di atas.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-item p-4 rounded-xl flex items-start gap-4">
+                        <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/40 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            2
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Masukkan <strong class="text-blue-400 font-bold">NPSN Resmi Sekolah</strong> Anda pada kolom yang disediakan.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-item p-4 rounded-xl flex items-start gap-4">
+                        <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            3
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Periksa kelengkapan data Identitas Sekolah dan Nama Bendahara.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-item p-4 rounded-xl flex items-start gap-4">
+                        <div class="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/40 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            4
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Unggah berkas dokumen pendukung BOSP dalam format yang diizinkan <span class="text-slate-400 font-mono text-xs">(Maksimal 10MB)</span>.
+                        </p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="step-item p-4 rounded-xl flex items-start gap-4">
+                        <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/40 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            5
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Pastikan melakukan pengiriman sebelum batas waktu countdown berakhir.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Auditor Access & Help Bar Footer inside Card -->
+            <div class="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-rounded text-amber-400 text-base">admin_panel_settings</span>
+                    <span>Bagi Tim Auditor BPK / Dinas Pendidikan:</span>
+                </div>
+                <!-- MENGUBAH HREF MENJADI app.html BUKAN KE GOOGLE SCRIPT LAGI -->
+                <a href="app.html" 
+                   class="bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-400/30 px-4 py-2 rounded-xl font-bold flex items-center gap-1.5 transition">
+                    <span class="material-symbols-rounded text-sm">login</span>
+                    <span>Dashboard Kontrol Petugas</span>
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="font-semibold text-slate-400 mb-1">SIPDATA BPK — KABUPATEN BOALEMO</p>
+            <p>&copy; 2026 Dinas Pendidikan dan Kebudayaan Kab. Boalemo & BPK RI. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Countdown Script -->
+    <script>
+        function updateCountdown() {
+            // Target Date: 12 September 2026 23:59:59
+            const targetDate = new Date("2026-09-12T23:59:59").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('cd-days').innerText = '00';
+                document.getElementById('cd-hours').innerText = '00';
+                document.getElementById('cd-mins').innerText = '00';
+                document.getElementById('cd-secs').innerText = '00';
+            }
+        }
+
+        // Run on load and every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 
 </body>
 </html>
