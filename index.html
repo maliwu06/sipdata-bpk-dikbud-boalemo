@@ -10,31 +10,24 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      overflow: hidden; 
-      background-color: #0e1626; /* Disesuaikan dengan warna tema aplikasi */
-    }
-    .iframe-wrapper {
-      position: absolute;
-      top: 0px; /* Mengurangi pergeseran agar logo tidak terpotong */
-      left: 0;
+    html, body {
       width: 100%;
-      height: calc(100% + 18px); 
+      height: 100%;
+      overflow: hidden;
+      background-color: #0b1329;
     }
     iframe {
       width: 100%;
       height: 100%;
-      border: none;
+      border: 0;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <div class="iframe-wrapper">
-    <!-- Ganti URL di bawah dengan URL Web App GAS kamu -->
-    <iframe 
-      src="https://script.google.com/macros/s/AKfycbzfpkLfTv3aDpy9VGEx9pyn0cFxqrHkd4cc47iGjAo5SwvuPP_l5fSzfkUVJfRN_4sCkA/exec" 
-      allow="geolocation; microphone; camera; clipboard-write">
-    </iframe>
-  </div>
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbzfpkLfTv3aDpy9VGEx9pyn0cFxqrHkd4cc47iGjAo5SwvuPP_l5fSzfkUVJfRN_4sCkA/exec" 
+    allow="geolocation; microphone; camera; clipboard-write">
+  </iframe>
 </body>
 </html>
